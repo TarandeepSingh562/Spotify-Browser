@@ -1,0 +1,28 @@
+<div class="row">
+	<div *ngIf="track" class="col-6">
+		<!--TODO: populate with track name-->
+		<h1>???</h1>
+		<p>
+			<!--TODO: link to album page, display album name-->
+			Track on <a>???</a>
+		</p>
+		<div>
+			<!--TODO: loop over track's artists-->
+			<p>
+				<!--TODO: link to artist page, display artist name-->
+				Artist: <a>???</a>
+			</p>
+		</div>
+		<p>
+			<!--TODO: populate with track duration-->
+			Duration: ???
+		</p>
+		<p>
+			<!--TODO: link to track page on spotify, display track name-->
+			<a class="btn btn-light" role="button" target="_blank">Open ??? on Spotify</a>
+		</p>
+	</div>
+	<div *ngIf="audioFeatures" class="col-6">
+		<!--TODO: loop over types of features and create a thermometer component for each-->
+	</div>
+</div>
