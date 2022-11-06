@@ -4,7 +4,7 @@
     <!--carousel-card can bind a single resource as an Input.-->
     <!--"let first=first" sets the "first" variable to be true for the first card in the carousel. The [ngClass] assigns the active property to it-->
     <!--https://stackoverflow.com/questions/44288434/angular-2-ngfor-first-last-index-loop-->
-    <app-carousel-card *ngFor="let first=first" class="carousel-item" [ngClass]="{'active': first}"></app-carousel-card>
+    <app-carousel-card *ngFor= "let resource of resources; let first=first" class="carousel-item" [ngClass]="{'active': first} " [resource] = "resource"></app-carousel-card>
   </div>
   <a class="carousel-control-prev" href="#{{carouselId}}" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
