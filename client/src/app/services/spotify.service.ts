@@ -113,7 +113,7 @@ export class SpotifyService {
     //use the tracks for album endpoint to make a request to express.
     var encodedSearch = `/album-tracks/${encodeURIComponent(albumId)}`;
     var getTracksAlbum = this.sendRequestToExpress(encodedSearch).then((data) => {
-      return data['tracks'].map((t:any) => new TrackData(t))
+      return data['items'].map((t:any) => new TrackData(t))
     });
 
     return getTracksAlbum;
@@ -123,7 +123,7 @@ export class SpotifyService {
     //use the track endpoint to make a request to express.
     var encodedSearch = `/track/${encodeURIComponent(trackId)}`;
     var getTracks = this.sendRequestToExpress(encodedSearch).then((data) => {
-      return data;
+      return new TrackData(data);
     });
 
     return getTracks;
@@ -132,10 +132,13 @@ export class SpotifyService {
   getAudioFeaturesForTrack(trackId:string):Promise<TrackFeature[]> {
     // use the audio features for track endpoint to make a request to express.
     var encodedSearch = `/track-audio-features/${encodeURIComponent(trackId)}`;
-    var getTrackAudio = this.sendRequestToExpress(encodedSearch).then((data) => {
-      return data['tracks'].map((t:any) => new TrackData(t))
+    var getTrackAudioData = this.sendRequestToExpress(encodedSearch).then((data) => {
+      return TrackFeature.FeatureTypes.map((feature:any) => {
+        return new TrackFeature(feature, data[feature])
+      
+      })
     });
-
-    return getTrackAudio;
+    return getTrackAudioData;
   }
 }
+

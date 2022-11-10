@@ -1,28 +1,29 @@
 <div class="row">
 	<div *ngIf="track" class="col-6">
 		<!--TODO: populate with track name-->
-		<h1>???</h1>
+		<h1>{{track.name}}</h1>
 		<p>
 			<!--TODO: link to album page, display album name-->
-			Track on <a>???</a>
+			Track on <a href = 'album/{{track.album.id}}'>{{track.album.name}}</a>
 		</p>
 		<div>
 			<!--TODO: loop over track's artists-->
-			<p>
+			<p *ngFor = "let artist of track.album.artists">
 				<!--TODO: link to artist page, display artist name-->
-				Artist: <a>???</a>
+				Artist: <a href = "artist/{{track.artists[0].id}}">{{track.artists[0].name}}</a>
 			</p>
 		</div>
 		<p>
 			<!--TODO: populate with track duration-->
-			Duration: ???
+			Duration: {{track.durationStr}}
 		</p>
 		<p>
 			<!--TODO: link to track page on spotify, display track name-->
-			<a class="btn btn-light" role="button" target="_blank">Open ??? on Spotify</a>
+			<a class="btn btn-light" role="button" target="_blank" [href] ='track.url' >Open {{track.name}} on Spotify</a>
 		</p>
 	</div>
 	<div *ngIf="audioFeatures" class="col-6">
 		<!--TODO: loop over types of features and create a thermometer component for each-->
+		<app-thermometer *ngFor = "let f of audioFeatures" [color] = "f.color" [percent] = "f.percent" [percentageString]="f.percentageString" [name] = "f.name"></app-thermometer>
 	</div>
 </div>

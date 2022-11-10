@@ -3,6 +3,10 @@
 	height: 20px;
 	overflow: visible;
 }
+.progress-bar{
+	overflow: visible;
+	color: #444;
+}
 
 .progress-bar .progress-bar-text {
   position: absolute;
